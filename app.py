@@ -24,7 +24,7 @@ def predict():
     int_features = [float(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    return render_template('index.html', prediction_text=' {} '.format(prediction))
+    return render_template('index.html', prediction_text='Average shrimp body weight is {}'.format(text))
 
 
 if __name__ == "__main__":
