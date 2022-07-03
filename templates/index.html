@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <style>
+            *{
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(#faa,#a1a1ff);
+        }
+        .row{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding-left: 110px;
+
+        }
+        .row-1{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .row-1 img{
+            max-width: 12%;
+            padding-top : 20px;
+            padding-left: 0px;
+            align-content: center; 
+        }
+        .col-3{
+            flex-basis: 60%;
+            min-width: 300px;
+        }
+        .col-2 img{
+            max-width: 90%;
+            padding-top: 0px;
+            padding-left: 50px;
+        }
+        .col-2{
+            flex-basis: 50%;
+            min-width: 300px
+        }
+        input{
+            width: 120%;
+            margin-bottom: 10px;
+            background: #fff;
+            padding: 10px;
+            color: black;
+            border-radius: 50px;
+            transition: background 0.5s;
+            text-align: center;
+        }
+        .btn{
+            display: inline-block;
+            background: #ff523b;
+            color: #fff;
+            padding: 8px 30px;
+            margin: 10px 0;
+            border-radius: 30px;
+            transition: background 0.5s;
+            align-items: center;
+        }
+        .btn:hover{
+            background: #528999;
+        }
+
+        .pred{
+            text-align: justify-all;
+            padding-left: 100px;
+        }
+        </style>
+        <meta name="viewport" content="with=device-width, intial-scale=1.0">
+        <title>Shrimp</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+       
+            <div class="row-1">
+                <img src="file:///C:\Users\user\Pictures\model deployment\templates\logo.webp"/>
+                <div class="col-3">
+                    <h1>Shrimp Body Weight Predictor</h1>
+                </div>
+             </div>
+                    <br>
+                    <br>
+            <div class="row">
+                
+    		<form action="{{ url_for('predict')}}"method="post">
+                    <input type="text" name="DOC" placeholder="Days of Culture (1 to 100)" required="required" />
+                    <br>
+                    
+                    <input type="text" name="Salinity (ppt)" placeholder="Salinity (ppt)" required="required" />
+                    <br>
+                
+                    
+                    <input type="text" name="Average DO (ppm)" placeholder="Average DO (ppm)" required="required" />
+                    <br>
+                
+                    <input type="text" name="TSS (ml/L)" placeholder="Total Suspended Solids (ml/L)" required="required" />
+                    <br>
+                       
+                    <input type="text" name="TDF (kg)" placeholder="TDF (kg)" required="required" />
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                </form>
+                <div class="col-2">
+                <img src="file:///C:\Users\user\Pictures\model deployment\templates\shrim.png">
+                </div>
+            </div>
+            <div class = "pred">
+			<p class= "result"><em>Average Shrimp Body Weight is <strong>{{ prediction_text }}</strong>grams</em></p>
+		</div>
+    </body>
+    
+
+</html>
