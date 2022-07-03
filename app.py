@@ -13,16 +13,15 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
-def weight():
+def home():
     return render_template('index.html')
-
 @app.route('/predict',methods=['POST'])
 def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    int_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
+    feature_list = request.form.to_dict()
+    feature_list = list(feature_list.values())
+    feature_list = list(map(int, feature_list))
+    final_features = np.array(feature_list).reshape(1, 12) 
+    
     prediction = model.predict(final_features)
     return render_template('index.html', prediction_text='Average shrimp body weight is {}'.format(text))
 
