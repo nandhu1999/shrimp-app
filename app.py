@@ -21,7 +21,7 @@ def predict():
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
     
-    return render_template('index.html', prediction_text='Average shrimp body weight is {} grams'.format(prediction))
+    return render_template('index.html', prediction_text='{}'.format(prediction))
 
 
 if __name__ == "__main__":
