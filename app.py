@@ -17,13 +17,11 @@ def home():
     return render_template('index.html')
 @app.route('/predict',methods=['POST'])
 def predict():
-    feature_list = request.form.to_dict()
-    feature_list = list(feature_list.values())
-    feature_list = list(map(int, feature_list))
-    final_features = np.array(feature_list).reshape(1, 12) 
-    
+    int_features = [flot(x) for x in request.form.values()]
+    final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
-    return render_template('index.html', prediction_text='{}'.format(text))
+    
+    return render_template('index.html', prediction_text='Average shrimp body weight is {} grams'.format(prediction))
 
 
 if __name__ == "__main__":
